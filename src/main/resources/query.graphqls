@@ -1,0 +1,4 @@
+type Query {
+    getAddress(id: Long): Address!
+    listAllAddress(page: Int, size: Int): AddressPaginated!
+}

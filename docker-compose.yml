@@ -1,0 +1,37 @@
+version: '2'
+services:
+  backend-java:
+    build: build/docker/.
+    ports:
+      - "8080:8080"
+    environment:
+      ENV: dev
+      MYSQL_HOST: backend-mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    networks:
+      - external_network
+    networks:
+      - bd-tier
+
+  backend-mysql:
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: backend
+      MYSQL_USER: backend
+      MYSQL_PASSWORD: backend
+    image: mysql:5.7
+    ports:
+      - "3310:3306"
+    networks:
+      - bd-tier
+    restart: on-failure:10
+    volumes:
+      - ./dbdata:/var/lib/mysql
+
+networks:
+  bd-tier:
+    driver: bridge

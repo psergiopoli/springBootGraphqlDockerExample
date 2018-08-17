@@ -1,0 +1,16 @@
+type City {
+    id: ID!
+    name: String!
+}
+
+type Address {
+    id: ID!
+    zipCode: String!
+    city: City!
+}
+
+type AddressPaginated {
+    total: Long!
+    totalPages: Long!
+    results: [Address]!
+}

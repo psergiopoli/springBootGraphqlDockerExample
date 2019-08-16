@@ -32,3 +32,6 @@ app*.log
 
 ### VSCode ###
 /vscode/
+
+### Binary ###
+/bin/

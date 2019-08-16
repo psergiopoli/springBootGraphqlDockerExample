@@ -7,7 +7,6 @@ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import java.util.List;
 
 @Component
 public class AddressQuery implements GraphQLQueryResolver {
@@ -17,6 +16,11 @@ public class AddressQuery implements GraphQLQueryResolver {
     @Autowired
     public AddressQuery(AddressService addressService) {
         this.addressService = addressService;
+    }
+
+    public Address getAddress(long id) {
+        Address address = addressService.getAddress(id);
+        return address;
     }
 
     public AddressPaginated listAllAddress(int page, int size) {

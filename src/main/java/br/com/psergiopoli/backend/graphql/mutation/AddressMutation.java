@@ -7,7 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Mutation implements GraphQLMutationResolver {
+public class AddressMutation implements GraphQLMutationResolver {
 
+    AddressService addressService;
 
+    @Autowired
+    public AddressMutation(AddressService addressService) {
+        this.addressService = addressService;
+    }
+
+    public Address createAddress(String zipCode){
+        return addressService.createAddress(zipCode);
+    }
 }

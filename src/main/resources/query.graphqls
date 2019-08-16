@@ -1,4 +1,6 @@
 type Query {
+    testError: String!
+    healthCheck: String!
     getAddress(id: Long): Address!
     listAllAddress(page: Int, size: Int): AddressPaginated!
 }

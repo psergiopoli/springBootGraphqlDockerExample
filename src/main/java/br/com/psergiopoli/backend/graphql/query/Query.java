@@ -1,5 +1,6 @@
 package br.com.psergiopoli.backend.graphql.query;
 ;
+import br.com.psergiopoli.backend.errors.WhateverError;
 import br.com.psergiopoli.backend.model.Address;
 import br.com.psergiopoli.backend.service.AddressService;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
@@ -9,15 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class Query implements GraphQLQueryResolver {
 
-    AddressService addressService;
-
-    @Autowired
-    public Query(AddressService addressService) {
-        this.addressService = addressService;
+    public String healthCheck() {
+        return "Graphql APP is Running";
     }
 
-    public Address getAddress(long id) {
-        Address address = addressService.getAddress(id);
-        return address;
+    public String testError() {
+        throw new WhateverError("Runtime error on testError");
     }
+
 }

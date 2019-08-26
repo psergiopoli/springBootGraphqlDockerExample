@@ -10,8 +10,6 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
     networks:
-      - external_network
-    networks:
       - bd-tier
 
   backend-mysql:
